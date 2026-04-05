@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1: TS Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Inventory Management System</h1>
+    </header>
+
+    <!-- Custom Notification Area (HD requirement) -->
+    <div id="notification-area"></div>
+
+    <div class="container">
+        <!-- Form Section -->
+        <section class="card">
+            <h2>Manage Item</h2>
+            <form id="inventory-form">
+                <input type="text" id="itemId" placeholder="Item ID (Unique)" required>
+                <input type="text" id="itemName" placeholder="Item Name (Update/Delete Key)" required>
+                
+                <select id="itemCategory">
+                    <option value="Electronics">Electronics</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Tools">Tools</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+
+                <input type="number" id="itemQty" placeholder="Quantity" min="0" required>
+                <input type="number" id="itemPrice" placeholder="Price" min="0" step="0.01" required>
+                <input type="text" id="itemSupplier" placeholder="Supplier Name" required>
+                
+                <select id="itemStatus">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Low Stock">Low Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+
+                <select id="itemPopular">
+                    <option value="false">Not Popular</option>
+                    <option value="true">Popular Item</option>
+                </select>
+
+                <input type="text" id="itemComment" placeholder="Comment (Optional)">
+                
+                <div class="btn-group">
+                    <button type="button" onclick="addItem()" class="btn-primary">Add Item</button>
+                    <button type="button" onclick="updateItem()" class="btn-warning">Update by Name</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Controls & Display Section -->
+        <section class="card display-section">
+            <h2>Inventory List</h2>
+            <div class="controls">
+                <input type="text" id="searchBar" placeholder="Search / Delete by Name...">
+                <button type="button" onclick="searchItem()">Search</button>
+                <button type="button" onclick="deleteConfirmation()" class="btn-danger">Delete</button>
+                <button type="button" onclick="displayItems(inventory)">Show All</button>
+                <button type="button" onclick="displayPopularItems()">Show Popular</button>
+            </div>
+            <div id="inventory-list" class="table-responsive">
+                <p>No items in database.</p>
+            </div>
+        </section>
+    </div>
+    <!-- Make sure to compile app.ts to app.js before running -->
+    <script src="app.js"></script>
+</body>
+</html>
