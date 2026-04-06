@@ -1,0 +1,33 @@
+/* 
+ * Author: [Your Name]
+ * Description: Responsive CSS using CSS Grid & Flexbox
+ */
+:root { --primary: #0056b3; --success: #28a745; --danger: #dc3545; --warning: #ffc107; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+header { background: var(--primary); color: white; padding: 1rem; text-align: center; }
+
+.container { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+.card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex: 1 1 300px; }
+.display-section { flex: 2 1 600px; } /* 宽屏时右侧占据更大空间 */
+
+form { display: grid; gap: 10px; }
+input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;}
+button { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; background-color: var(--primary); transition: 0.3s;}
+button:hover { opacity: 0.8; }
+.btn-danger { background-color: var(--danger); }
+.btn-warning { background-color: var(--warning); color: black; }
+.btn-success { background-color: var(--success); }
+
+/* Notifications */
+#notification-area { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+.toast { padding: 15px 20px; margin-bottom: 10px; border-radius: 5px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); animation: slideIn 0.3s ease-out; }
+.toast-success { background-color: var(--success); }
+.toast-error { background-color: var(--danger); }
+.toast-warning { background-color: var(--warning); color: black; }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+/* Table responsive */
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background-color: var(--primary); color: white; }
