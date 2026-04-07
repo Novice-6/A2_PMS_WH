@@ -103,7 +103,7 @@ function updateItem(): void {
     }
 
     // Retain original ID, update other fields
-    formItem.id = inventory[index].id; 
+    formItem.id = inventory[index]!.id; 
     inventory[index] = formItem;
     showNotification(`Item "${formItem.name}" updated successfully!`, "success");
     displayItems(inventory);
