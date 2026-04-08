@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrudManagerComponent } from './crud-manager.component';
+import { HelpComponent } from './help.component';
 
-describe('CrudManagerComponent', () => {
-  let component: CrudManagerComponent;
-  let fixture: ComponentFixture<CrudManagerComponent>;
+describe('HelpComponent', () => {
+  let component: HelpComponent;
+  let fixture: ComponentFixture<HelpComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrudManagerComponent]
+      imports: [HelpComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CrudManagerComponent);
+    fixture = TestBed.createComponent(HelpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
