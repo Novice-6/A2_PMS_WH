@@ -1,4 +1,4 @@
-/* Author: Your Name | Assignment Part 2 */
+/* Student Name: Hao Wang ID: 24832782 Part 2 */
 .manage-container {
   padding: 20px;
   max-width: 600px;
@@ -22,7 +22,7 @@
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* 确保 padding 不会撑破宽度 */
+  box-sizing: border-box; /* Ensure padding doesn't push the width over */
 }
 .btn {
   padding: 10px 15px;

@@ -6,6 +6,7 @@
     {{ message }}
   </div>
 
+  <!-- Delete Confirmation Alert -->
   <div *ngIf="showDeleteConfirm" class="alert" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
     <p>Are you sure you want to delete <b>{{ currentItem.name }}</b>?</p>
     <button (click)="executeDelete()" class="btn btn-danger">Yes, Delete</button>
@@ -14,7 +15,7 @@
 
   <div style="display: flex; flex-direction: column;">
     
-    <!-- 极佳的用户体验提示 -->
+    <!-- Clearly mark the required items -->
     <p style="font-size: 0.9rem; color: #666; margin-top: 0;">
       Fields marked with <span style="color: red; font-weight: bold;">*</span> are required.
     </p>
@@ -72,7 +73,7 @@
       </select>
     </div>
 
-    <!-- 明确标识出选填项 -->
+    <!-- Clearly mark the optional items -->
     <div class="form-group">
       <label>Comment <span style="color: #666; font-size: 0.9em;">(Optional)</span>:</label>
       <input type="text" [(ngModel)]="currentItem.comment" class="form-control">

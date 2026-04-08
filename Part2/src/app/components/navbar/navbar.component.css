@@ -5,10 +5,9 @@
   display: flex;
   align-items: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  height: 60px; /* 固定高度，防止高亮条跳动 */
+  height: 60px; /* Fixed height to prevent highlight bar jumping */
 }
 
-/* 左侧 Logo 文字 */
 .nav-brand {
   margin: 0;
   color: white;
@@ -16,13 +15,12 @@
   font-size: 1.4rem;
 }
 
-/* 右侧链接组 */
+/* Navigation links group */
 .nav-links {
   display: flex;
   height: 100%;
 }
 
-/* 默认的链接样式 */
 .nav-link {
   color: white;
   text-decoration: none;
@@ -30,18 +28,18 @@
   padding: 0 20px;
   display: flex;
   align-items: center;
-  border-bottom: 4px solid transparent; /* 预留底部边框的位置 */
+  border-bottom: 4px solid transparent; /* Reserve space for bottom border */
   transition: background-color 0.3s ease;
 }
 
-/* 鼠标悬停时的效果 */
+/* Hover effect for navigation links */
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 🚀 核心：当前激活页面的高亮样式 */
+/* Active link style for active navigation link */
 .active-link {
-  background-color: rgba(255, 255, 255, 0.15); /* 背景稍微变亮 */
-  border-bottom: 4px solid #ffc107; /* 底部出现一条漂亮的亮黄色指示条 */
-  color: #ffc107; /* 文字也变成黄色，极其醒目 */
+  background-color: rgba(255, 255, 255, 0.15); /* Background slightly brighter */
+  border-bottom: 4px solid #ffc107; /* Bottom indicator line */
+  color: #ffc107; /* Text color changes to yellow, extremely visible */
 }

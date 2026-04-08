@@ -3,21 +3,22 @@
   <h2>Search & View Inventory</h2>
   
   <div style="margin-bottom: 20px;">
-    <!-- 1. 删除了 (input)="onSearch()"，防止打字时自动搜索 -->
-    <!-- 2. 增加了 (keyup.enter)="onSearch()"，支持按回车键搜索，极大提升UX -->
+    <!-- Search input with Enter key support for better UX -->
     <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="onSearch()" placeholder="Search by name..." class="search-bar">
     
+    <!-- Action buttons for Search, Popular Items, and Show All -->
     <button (click)="onSearch()" class="btn">Search</button>
     <button (click)="showPopular()" class="btn" style="background-color: #ffc107; color: black;">Show Popular</button>
-    <!-- 新增了 Show All 按钮 -->
     <button (click)="showAll()" class="btn" style="background-color: #6c757d; color: white;">Show All</button>
   </div>
 
+  <!-- Display inventory table if items exist, otherwise show no data template -->
   <table *ngIf="displayItems.length > 0; else noData" class="inventory-table">
     <tr>
       <th>ID</th><th>Name</th><th>Category</th><th>Supplier</th>
       <th>Qty</th><th>Price</th><th>Status</th><th>Popular</th><th>Comment</th>
     </tr>
+    <!-- Iterate through displayItems to render each row -->
     <tr *ngFor="let item of displayItems">
       <td>{{ item.id }}</td>
       <td><strong>{{ item.name }}</strong></td>
@@ -31,6 +32,7 @@
     </tr>
   </table>
 
+  <!-- Template displayed when no search results are found -->
   <ng-template #noData>
     <p style="padding: 20px; background: #eee; border-radius: 4px;">No items found. Try a different search or click 'Show All'.</p>
   </ng-template>

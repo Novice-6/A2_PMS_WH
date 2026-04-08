@@ -18,29 +18,30 @@ export class SearchComponent implements OnInit {
   constructor(private inventoryService: InventoryService) {}
 
   ngOnInit() {
-    this.showAll(); // 页面初始加载时，显示所有数据
+    this.showAll(); // Initialize by displaying all items on page load
   }
 
-  // 点击 Search 按钮时触发
+  // Triggered when the Search button is clicked or Enter key is pressed
   onSearch() {
     const allItems = this.inventoryService.getItems();
     if (!this.searchTerm.trim()) {
-      this.displayItems = allItems;
+      this.displayItems = allItems; // Show all items if search term is empty
     } else {
+      // Filter items by name (case-insensitive)
       this.displayItems = allItems.filter(item => 
         item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
   }
 
-  // 过滤受欢迎的物品
+  // Filter and display only popular items
   showPopular() {
     this.displayItems = this.inventoryService.getItems().filter(item => item.isPopular);
   }
 
-  // 新增：重置并显示所有物品
+  // Reset search term and display all items
   showAll() {
-    this.searchTerm = ''; // 清空搜索框
-    this.displayItems = this.inventoryService.getItems(); // 重新拉取完整数组
+    this.searchTerm = ''; // Clear the search input field
+    this.displayItems = this.inventoryService.getItems(); // Reload full item list
   }
 }

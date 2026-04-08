@@ -12,7 +12,7 @@ import { InventoryService, Item } from '../../services/inventory.service';
   styleUrls: ['./manage.component.css']
 })
 export class ManageComponent {
-  // 用最简单的方式初始化一个对象，学生一看就懂
+  // Initialize the currentItem with default values.
   currentItem: Item = { 
     id: '', 
     name: '', 
@@ -25,22 +25,23 @@ export class ManageComponent {
     comment: ''
   };
   
-  // 用于界面显示提示信息
+  // Message variables for display on the UI.
   message: string = '';
   isError: boolean = false;
   showDeleteConfirm: boolean = false;
 
+  // Constructor: Inject the InventoryService.
   constructor(private inventoryService: InventoryService) {}
 
-  // 简单的提示函数
+  // Show toast message on the UI.
   showToast(msg: string, isErr: boolean) {
     this.message = msg;
     this.isError = isErr;
     setTimeout(() => { this.message = ''; }, 3000);
   }
 
+  // Add item to the inventory.
   onAdd() {
-    // 最基础的 if 验证
     if (this.currentItem.id === '' || this.currentItem.name === '' || this.currentItem.supplier === '') {
       this.showToast("Error: ID, Name and Supplier are required!", true);
       return;
@@ -53,18 +54,25 @@ export class ManageComponent {
     const result = this.inventoryService.addItem(this.currentItem);
     this.showToast(result.msg, !result.success);
     
-    // 成功后清空输入框
+    // Clear the input fields if the addition is successful.
     if (result.success) {
       this.currentItem = { id: '', name: '', category: 'Electronics', supplier: '', quantity: 0, price: 0, stockStatus: 'In Stock', isPopular: false, comment: '' };
     }
   }
 
+  /**
+   * Updates an existing item in the inventory based on its name.
+   * Validates that the item name is provided before attempting the update.
+   * Displays a success or error message depending on the result.
+   */
   onUpdate() {
+    // Validate that the item name is not empty
     if (this.currentItem.name === '') { 
       this.showToast("Error: Name is required to update!", true); 
       return; 
     }
     
+    // Attempt to update the item by name via the inventory service
     const success = this.inventoryService.updateItemByName(this.currentItem);
     if (success) {
       this.showToast("Item updated successfully!", false);
@@ -73,14 +81,24 @@ export class ManageComponent {
     }
   }
 
+  /**
+   * Triggers the delete action.
+   * Validates if the current item name is empty. If empty, shows an error toast and returns.
+   * Otherwise, displays the delete confirmation dialog.
+   */
   triggerDelete() {
     if (this.currentItem.name === '') { 
       this.showToast("Error: Enter name to delete!", true); 
       return; 
     }
-    this.showDeleteConfirm = true; // 显示确认框
+    this.showDeleteConfirm = true; // Show delete confirmation dialog
   }
 
+  /**
+   * Executes the deletion of the current item.
+   * Calls the inventory service to delete the item by name and displays a toast notification
+   * based on the result. Finally, hides the delete confirmation dialog.
+   */
   executeDelete() {
     const success = this.inventoryService.deleteItemByName(this.currentItem.name);
     if (success) {
@@ -88,10 +106,10 @@ export class ManageComponent {
     } else {
       this.showToast("Item not found!", true);
     }
-    this.showDeleteConfirm = false; // 隐藏确认框
+    this.showDeleteConfirm = false; // Hide delete confirmation dialog
   }
 
   cancelDelete() {
-    this.showDeleteConfirm = false; // 隐藏确认框
+    this.showDeleteConfirm = false; 
   }
 }

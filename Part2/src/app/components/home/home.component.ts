@@ -1,11 +1,12 @@
 /* student name: Hao Wang ID: 24832782*/  
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // 核心：必须导入这个模块才能实现无刷新跳转
+// The directive for creating links that trigger navigation.
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink], // 核心：在这里注册
+  imports: [RouterLink], // Register the RouterLink directive here
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component'; // 引入刚才的导航栏
+// Navbar Component: The navigation bar component.
+import { NavbarComponent } from './components/navbar/navbar.component'; 
 
+// App Component: The root component of the application.
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent], // 在这里注册
+  imports: [RouterOutlet, NavbarComponent], // Register the NavbarComponent here.
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

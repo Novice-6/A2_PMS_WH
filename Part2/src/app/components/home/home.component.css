@@ -1,4 +1,4 @@
-/* Author: Your Name | Assignment Part 2 */
+/* Student Name: Hao Wang ID: 24832782 Part 2 */
 .home-container {
   text-align: center;
   margin-top: 50px;
@@ -35,5 +35,5 @@
   font-weight: bold;
 }
 .btn-primary:hover {
-  background-color: #004494; /* 加一点悬停效果，提升 UX */
+  background-color: #004494; /* Add a hover effect for UX improvement */
 }
