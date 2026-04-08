@@ -1,26 +1,33 @@
-<div style="padding: 20px; max-width: 800px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-  <h2 style="color: #d9534f; border-bottom: 2px solid #eee; padding-bottom: 10px;">Privacy & Security Analysis</h2>
-  <p style="color: #555; font-size: 1.1rem;">
-    This page outlines the key security and privacy considerations specific to this Mobile Inventory Application.
+<div style="padding: 20px; max-width: 800px; margin: auto; background: #fff; border-radius: 8px;">
+  <h2 style="color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px;">Privacy & Security Analysis</h2>
+  <p style="color: #555;">
+    To achieve a secure mobile environment, this application addresses specific privacy and security vulnerabilities intrinsic to standalone web and mobile systems.
   </p>
 
+  <!-- 1. 输入验证与防注 -->
   <div style="margin-top: 20px;">
-    <h3 style="color: #333;">1. Input Validation & XSS Prevention</h3>
+    <h3 style="color: #333;">1. Input Validation & XSS Prevention (Security)</h3>
     <p style="color: #666; line-height: 1.5;">
-      <strong>Consideration:</strong> Malicious users might try to enter harmful scripts (Cross-Site Scripting) into fields like "Item Name" or "Comment".<br>
-      <strong>Implementation:</strong> Angular automatically sanitizes all values bound to the HTML (using interpolation <code>{{ '{{"{{"}}' }}</code>). Additionally, we implemented strict form validation to ensure quantities and prices cannot be negative.
+      <strong>Vulnerability:</strong> Malicious inputs (e.g., typing scripts instead of Item Names) can lead to Cross-Site Scripting (XSS) attacks.<br>
+      <strong>Solution:</strong> The application rigorously validates inputs. Numeric fields are restricted at the keystroke level to reject letters. Furthermore, Angular's default data-binding strictly sanitizes outputs, automatically neutralizing malicious HTML/JS payloads.
     </p>
+  </div>
 
-    <h3 style="color: #333;">2. Data Persistence & Local Privacy</h3>
+  <!-- 2. 数据持久化与本地隐私 -->
+  <div style="margin-top: 15px;">
+    <h3 style="color: #333;">2. Data Persistence & Local Privacy (Privacy)</h3>
     <p style="color: #666; line-height: 1.5;">
-      <strong>Consideration:</strong> Inventory data might contain sensitive supplier information or pricing strategies.<br>
-      <strong>Implementation:</strong> Currently, this app runs entirely on the client-side (Session-based). Data is not sent to any external server, meaning privacy is maintained locally. However, closing the browser will clear the data. In a real-world mobile app, secure encrypted local storage (like SQLite) would be required.
+      <strong>Vulnerability:</strong> Storing inventory details on a mobile device without server sync risks exposing business data if the device is lost.<br>
+      <strong>Solution:</strong> Currently, data is maintained strictly within the browser's volatile <b>Session Memory</b> using Angular Services. It leaves no footprint once the application closes, protecting supplier and pricing privacy. In a production mobile environment, data would be stored using encrypted SQLite to comply with the <b>Australian Privacy Principles (APP 11: Security of Personal Information)</b>.
     </p>
+  </div>
 
-    <h3 style="color: #333;">3. Authentication & Authorization (Future Scope)</h3>
+  <!-- 3. ULO1 要求：移动设备架构考量 -->
+  <div style="margin-top: 15px;">
+    <h3 style="color: #333;">3. Middleware & Architecture Considerations</h3>
     <p style="color: #666; line-height: 1.5;">
-      <strong>Consideration:</strong> Unrestricted access allows anyone holding the device to delete or modify the inventory.<br>
-      <strong>Implementation:</strong> To make this application production-ready, a secure login system (using JWT or OAuth2) must be integrated. Different roles (e.g., Admin vs. Staff) should be created so only authorized personnel can execute the "Delete" function.
+      <strong>Analysis:</strong> Because mobile devices often switch between network architectures (Wi-Fi/4G/5G), relying solely on server-side validation is unsafe. <br>
+      <strong>Solution:</strong> This standalone app uses a "Client-heavy" architecture, ensuring that all logic, validation, and state management occur securely on the frontend via TypeScript, maintaining data integrity even offline.
     </p>
   </div>
 </div>
