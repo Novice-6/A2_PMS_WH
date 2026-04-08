@@ -6,7 +6,20 @@ header { background: var(--primary); color: white; padding: 1rem; text-align: ce
 .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex: 1 1 300px; }
 .display-section { flex: 2 1 600px; } /* 宽屏时右侧占据更大空间 */
 
-form { display: grid; gap: 10px; }
+form { display: grid; gap: 15px; }
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.form-group label {
+    font-weight: 500;
+    font-size: 14px;
+}
+.required {
+    color: var(--danger);
+    font-weight: bold;
+}
 input, select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;}
 button { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; background-color: var(--primary); transition: 0.3s;}
 button:hover { opacity: 0.8; }
