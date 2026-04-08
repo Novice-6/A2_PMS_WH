@@ -1,3 +1,4 @@
+/* student name: Hao Wang ID: 24832782*/
 import { Component } from '@angular/core';
 
 @Component({

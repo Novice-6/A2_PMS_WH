@@ -9,7 +9,7 @@
     // See also https://aka.ms/tsconfig/module
     "target": "ES2015", 
     "lib": ["DOM", "ES2015", "DOM.Iterable"],  
-    "module": "nodenext",
+    "module": "es2015",
    
     "types": [],
     // For nodejs:
@@ -37,9 +37,8 @@
     "strict": true,
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
   }
 }

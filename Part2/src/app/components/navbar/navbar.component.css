@@ -1,0 +1,47 @@
+/* 整体导航栏容器 */
+.navbar {
+  background: #0056b3;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  height: 60px; /* 固定高度，防止高亮条跳动 */
+}
+
+/* 左侧 Logo 文字 */
+.nav-brand {
+  margin: 0;
+  color: white;
+  padding-right: 40px;
+  font-size: 1.4rem;
+}
+
+/* 右侧链接组 */
+.nav-links {
+  display: flex;
+  height: 100%;
+}
+
+/* 默认的链接样式 */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid transparent; /* 预留底部边框的位置 */
+  transition: background-color 0.3s ease;
+}
+
+/* 鼠标悬停时的效果 */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 🚀 核心：当前激活页面的高亮样式 */
+.active-link {
+  background-color: rgba(255, 255, 255, 0.15); /* 背景稍微变亮 */
+  border-bottom: 4px solid #ffc107; /* 底部出现一条漂亮的亮黄色指示条 */
+  color: #ffc107; /* 文字也变成黄色，极其醒目 */
+}

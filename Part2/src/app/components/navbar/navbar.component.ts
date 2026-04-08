@@ -1,10 +1,11 @@
+/* student name: Hao Wang ID: 24832782*/
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router'; // 引入 RouterLink
+import { RouterLink, RouterLinkActive } from '@angular/router'; // 👈 增加 RouterLinkActive
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink], // 在这里注册
+  imports: [RouterLink, RouterLinkActive], // 👈 在这里注册它
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
