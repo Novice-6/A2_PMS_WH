@@ -1,34 +1,31 @@
-<div style="padding: 20px; max-width: 600px; margin: auto; background: #f9f9f9; border-radius: 8px;">
+<div class="manage-container">
   <h2>Manage Inventory</h2>
   
-  <!-- 提示信息区域 (代替 alert) -->
-  <div *ngIf="message" [style.color]="isError ? 'red' : 'green'" style="padding: 10px; border: 1px solid; margin-bottom: 15px;">
+  <div *ngIf="message" class="alert" [style.color]="isError ? 'red' : 'green'" [style.border]="'1px solid ' + (isError ? 'red' : 'green')">
     {{ message }}
   </div>
 
-  <!-- 删除确认区域 -->
-  <div *ngIf="showDeleteConfirm" style="background: yellow; padding: 15px; margin-bottom: 15px;">
+  <div *ngIf="showDeleteConfirm" class="alert" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba;">
     <p>Are you sure you want to delete <b>{{ currentItem.name }}</b>?</p>
-    <button (click)="executeDelete()" style="color: red;">Yes</button>
-    <button (click)="cancelDelete()">No</button>
+    <button (click)="executeDelete()" class="btn btn-danger">Yes, Delete</button>
+    <button (click)="cancelDelete()" class="btn btn-warning" style="margin-left: 10px;">Cancel</button>
   </div>
 
-  <!-- 表单区域 -->
-  <div style="display: flex; flex-direction: column; gap: 10px;">
-    
-    <div>
-      <label>Item ID:</label><br>
-      <input type="text" [(ngModel)]="currentItem.id" style="width: 100%;">
+  <div style="display: flex; flex-direction: column;">
+    <div class="form-group">
+      <label>Item ID:</label>
+      <input type="text" [(ngModel)]="currentItem.id" class="form-control">
     </div>
 
-    <div>
-      <label>Item Name (Key for Update/Delete):</label><br>
-      <input type="text" [(ngModel)]="currentItem.name" style="width: 100%;">
+    <div class="form-group">
+      <label>Item Name (Key for Update/Delete):</label>
+      <input type="text" [(ngModel)]="currentItem.name" class="form-control">
     </div>
 
-    <div>
-      <label>Category:</label><br>
-      <select [(ngModel)]="currentItem.category" style="width: 100%;">
+    <!-- 中间其他字段同理，加上 class="form-control" -->
+    <div class="form-group">
+      <label>Category:</label>
+      <select [(ngModel)]="currentItem.category" class="form-control">
         <option value="Electronics">Electronics</option>
         <option value="Furniture">Furniture</option>
         <option value="Clothing">Clothing</option>
@@ -37,48 +34,47 @@
       </select>
     </div>
 
-    <div>
-      <label>Supplier Name:</label><br>
-      <input type="text" [(ngModel)]="currentItem.supplier" style="width: 100%;">
+    <div class="form-group">
+      <label>Supplier Name:</label>
+      <input type="text" [(ngModel)]="currentItem.supplier" class="form-control">
     </div>
 
-    <div>
-      <label>Quantity:</label><br>
-      <input type="number" [(ngModel)]="currentItem.quantity" style="width: 100%;">
+    <div class="form-group">
+      <label>Quantity:</label>
+      <input type="number" [(ngModel)]="currentItem.quantity" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control">
     </div>
 
-    <div>
-      <label>Price ($):</label><br>
-      <input type="number" [(ngModel)]="currentItem.price" style="width: 100%;">
+    <div class="form-group">
+      <label>Price ($):</label>
+      <input type="number" [(ngModel)]="currentItem.price" min="0" step="0.01" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46" class="form-control">
     </div>
 
-    <div>
-      <label>Stock Status:</label><br>
-      <select [(ngModel)]="currentItem.stockStatus" style="width: 100%;">
+    <div class="form-group">
+      <label>Stock Status:</label>
+      <select [(ngModel)]="currentItem.stockStatus" class="form-control">
         <option value="In Stock">In Stock</option>
         <option value="Low Stock">Low Stock</option>
         <option value="Out of Stock">Out of Stock</option>
       </select>
     </div>
 
-    <div>
-      <label>Is Popular?</label><br>
-      <select [(ngModel)]="currentItem.isPopular" style="width: 100%;">
+    <div class="form-group">
+      <label>Is Popular?</label>
+      <select [(ngModel)]="currentItem.isPopular" class="form-control">
         <option [ngValue]="false">No</option>
         <option [ngValue]="true">Yes</option>
       </select>
     </div>
 
-    <div>
-      <label>Comment:</label><br>
-      <input type="text" [(ngModel)]="currentItem.comment" style="width: 100%;">
+    <div class="form-group">
+      <label>Comment:</label>
+      <input type="text" [(ngModel)]="currentItem.comment" class="form-control">
     </div>
 
-    <!-- 按钮组 -->
     <div style="margin-top: 15px;">
-      <button (click)="onAdd()" style="background: green; color: white; padding: 10px;">Add Item</button>
-      <button (click)="onUpdate()" style="background: orange; color: black; padding: 10px; margin-left: 10px;">Update</button>
-      <button (click)="triggerDelete()" style="background: red; color: white; padding: 10px; margin-left: 10px;">Delete</button>
+      <button (click)="onAdd()" class="btn btn-success">Add Item</button>
+      <button (click)="onUpdate()" class="btn btn-warning" style="margin-left: 10px;">Update</button>
+      <button (click)="triggerDelete()" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
     </div>
   </div>
 </div>

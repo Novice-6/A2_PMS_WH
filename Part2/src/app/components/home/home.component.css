@@ -1,0 +1,39 @@
+/* Author: Your Name | Assignment Part 2 */
+.home-container {
+  text-align: center;
+  margin-top: 50px;
+}
+.home-title {
+  color: #0056b3;
+}
+.intro-text {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.feature-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 260px;
+  background-color: #f9f9f9;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.btn-primary:hover {
+  background-color: #004494; /* 加一点悬停效果，提升 UX */
+}

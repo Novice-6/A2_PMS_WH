@@ -1,42 +1,31 @@
-<div style="padding: 20px;">
+<div class="search-container">
   <h2>Search & View Inventory</h2>
   
   <div style="margin-bottom: 20px;">
-    <!-- 双向绑定搜索词，输入时触发 onSearch 函数 -->
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..." (input)="onSearch()" style="padding: 5px; width: 200px;">
-    <button (click)="onSearch()" style="padding: 5px 10px; margin-left: 5px;">Search</button>
-    <button (click)="showPopular()" style="padding: 5px 10px; margin-left: 5px;">Show Popular Only</button>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..." (input)="onSearch()" class="search-bar">
+    <button (click)="onSearch()" class="btn">Search</button>
+    <button (click)="showPopular()" class="btn" style="background-color: #ffc107; color: black;">Show Popular Only</button>
   </div>
 
-  <!-- 使用原生 HTML 表格 -->
-  <table *ngIf="displayItems.length > 0; else noData" border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
-    <tr style="background-color: #ddd;">
-      <th>ID</th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Supplier</th>
-      <th>Qty</th>
-      <th>Price</th>
-      <th>Status</th>
-      <th>Popular</th>
-      <th>Comment</th>
+  <table *ngIf="displayItems.length > 0; else noData" class="inventory-table">
+    <tr>
+      <th>ID</th><th>Name</th><th>Category</th><th>Supplier</th>
+      <th>Qty</th><th>Price</th><th>Status</th><th>Popular</th><th>Comment</th>
     </tr>
-    <!-- 基础循环 -->
     <tr *ngFor="let item of displayItems">
       <td>{{ item.id }}</td>
-      <td>{{ item.name }}</td>
+      <td><strong>{{ item.name }}</strong></td>
       <td>{{ item.category }}</td>
       <td>{{ item.supplier }}</td>
       <td>{{ item.quantity }}</td>
-      <td>${{ item.price }}</td> <!-- 直接用 $ 符号拼接 -->
+      <td>${{ item.price }}</td>
       <td>{{ item.stockStatus }}</td>
       <td>{{ item.isPopular ? 'Yes' : 'No' }}</td>
       <td>{{ item.comment }}</td>
     </tr>
   </table>
 
-  <!-- 如果数组为空，显示这句话 -->
   <ng-template #noData>
-    <p>No items found.</p>
+    <p style="padding: 20px; background: #eee; border-radius: 4px;">No items found.</p>
   </ng-template>
 </div>

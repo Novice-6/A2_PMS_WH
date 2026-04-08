@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { InventoryService, Item } from '../../services/inventory.service';
 
 @Component({
-  selector: 'app-crud-manager',
+  selector: 'app-manage',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './manage.component.html'
+  templateUrl: './manage.component.html',
+  styleUrls: ['./manage.component.css']
 })
 export class ManageComponent {
   // 用最简单的方式初始化一个对象，学生一看就懂

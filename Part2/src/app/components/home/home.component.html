@@ -1,32 +1,23 @@
-<div style="text-align: center; margin-top: 50px;">
-  <h1 style="color: #0056b3;">Inventory Management System</h1>
+<!-- Author: Your Name | Assignment Part 2 -->
+<div class="home-container">
+  <h1 class="home-title">Inventory Management System</h1>
   
-  <!-- 说明应用程序的用途 (符合题目硬性要求) -->
-  <p style="font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto 30px auto; line-height: 1.6;">
+  <p class="intro-text">
     The primary purpose of this application is to help businesses efficiently manage their product stock. 
     It provides a seamless platform to record new inventory, update item details, monitor stock status, and quickly search through the database to prevent stock shortages.
   </p>
   
-  <!-- 功能卡片 -->
-  <div style="display: flex; justify-content: center; gap: 20px;">
-    
-    <div style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; width: 260px; background-color: #f9f9f9;">
+  <div class="card-container">
+    <div class="feature-card">
       <h3 style="margin-top: 0;">🛠️ Manage Stock</h3>
       <p style="color: #666; height: 40px;">Add new products, update pricing, or remove discontinued items.</p>
-      <!-- routerLink 跳转 -->
-      <a routerLink="/manage" style="display: inline-block; padding: 10px 20px; background-color: #0056b3; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">
-        Go to Manage
-      </a>
+      <a routerLink="/manage" class="btn-primary">Go to Manage</a>
     </div>
 
-    <div style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; width: 260px; background-color: #f9f9f9;">
+    <div class="feature-card">
       <h3 style="margin-top: 0;">🔍 Search & View</h3>
       <p style="color: #666; height: 40px;">Search for specific products by name or view all popular items.</p>
-      <!-- routerLink 跳转 -->
-      <a routerLink="/search" style="display: inline-block; padding: 10px 20px; background-color: #0056b3; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">
-        Go to Search
-      </a>
+      <a routerLink="/search" class="btn-primary">Go to Search</a>
     </div>
-
   </div>
 </div>
