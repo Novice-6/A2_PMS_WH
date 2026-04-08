@@ -1,6 +1,6 @@
 /* student name: Hao Wang ID: 24832782 Part1*/
 
-// 1. Enums & Interfaces (HD Standard: Strict Typing)
+// Category enum for item categories
 enum Category {
     Electronics = "Electronics",
     Furniture = "Furniture",
@@ -9,28 +9,30 @@ enum Category {
     Miscellaneous = "Miscellaneous"
 }
 
+// Stock status enum for item availability
 enum StockStatus {
     InStock = "In Stock",
     LowStock = "Low Stock",
     OutOfStock = "Out of Stock"
 }
 
+// Item interface defining the structure of inventory items
 interface Item {
-    id: string;
-    name: string;
-    category: Category;
-    quantity: number;
-    price: number;
-    supplier: string;
-    stockStatus: StockStatus;
-    isPopular: boolean;
-    comment?: string;
+    id: string;           // Unique identifier
+    name: string;         // Item name (used as key for update/delete)
+    category: Category;   // Item category
+    quantity: number;     // Available quantity
+    price: number;        // Item price
+    supplier: string;     // Supplier name
+    stockStatus: StockStatus; // Current stock status
+    isPopular: boolean;   // Flag for popular items
+    comment?: string;     // Optional comment
 }
 
-// 2. Data Storage (Session-based array)
-let inventory: Item[] = [];
+// Data Storage (Session-based array)
+let inventory: Item[] = []; // Main inventory storage
 
-// 3. UI/UX: Custom Notification System (HD Requirement: NO alert() allowed)
+// UI/UX: Custom Notification System (HD Requirement: NO alert() allowed)
 function showNotification(message: string, type: 'success' | 'error' | 'warning' = 'success', persist: boolean = false): void {
     const notifArea = document.getElementById("notification-area") as HTMLDivElement;
     notifArea.innerHTML = `<div class="toast toast-${type}">${message}</div>`;
@@ -40,7 +42,7 @@ function showNotification(message: string, type: 'success' | 'error' | 'warning'
     }
 }
 
-// 4. Core CRUD Functions
+// Core CRUD Functions
 function getFormValues(): Item | null {
     const id = (document.getElementById("itemId") as HTMLInputElement).value.trim();
     const name = (document.getElementById("itemName") as HTMLInputElement).value.trim();
