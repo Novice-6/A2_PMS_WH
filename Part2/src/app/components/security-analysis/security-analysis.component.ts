@@ -4,9 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-security-analysis',
   standalone: true,
   imports: [],
-  templateUrl: './security-analysis.component.html',
-  styleUrl: './security-analysis.component.css'
+  templateUrl: './security-analysis.component.html'
 })
-export class SecurityAnalysisComponent {
-
-}
+export class SecurityAnalysisComponent { }
