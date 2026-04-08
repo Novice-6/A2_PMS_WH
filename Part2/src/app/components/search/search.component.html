@@ -2,9 +2,14 @@
   <h2>Search & View Inventory</h2>
   
   <div style="margin-bottom: 20px;">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..." (input)="onSearch()" class="search-bar">
+    <!-- 1. 删除了 (input)="onSearch()"，防止打字时自动搜索 -->
+    <!-- 2. 增加了 (keyup.enter)="onSearch()"，支持按回车键搜索，极大提升UX -->
+    <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="onSearch()" placeholder="Search by name..." class="search-bar">
+    
     <button (click)="onSearch()" class="btn">Search</button>
-    <button (click)="showPopular()" class="btn" style="background-color: #ffc107; color: black;">Show Popular Only</button>
+    <button (click)="showPopular()" class="btn" style="background-color: #ffc107; color: black;">Show Popular</button>
+    <!-- 新增了 Show All 按钮 -->
+    <button (click)="showAll()" class="btn" style="background-color: #6c757d; color: white;">Show All</button>
   </div>
 
   <table *ngIf="displayItems.length > 0; else noData" class="inventory-table">
@@ -26,6 +31,6 @@
   </table>
 
   <ng-template #noData>
-    <p style="padding: 20px; background: #eee; border-radius: 4px;">No items found.</p>
+    <p style="padding: 20px; background: #eee; border-radius: 4px;">No items found. Try a different search or click 'Show All'.</p>
   </ng-template>
 </div>

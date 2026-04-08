@@ -6,7 +6,7 @@ import { InventoryService, Item } from '../../services/inventory.service';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule], // 导入必要的模块
+  imports: [CommonModule, FormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -16,11 +16,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private inventoryService: InventoryService) {}
 
-  // 页面加载时获取所有数据
   ngOnInit() {
-    this.displayItems = this.inventoryService.getItems();
+    this.showAll(); // 页面初始加载时，显示所有数据
   }
 
+  // 点击 Search 按钮时触发
   onSearch() {
     const allItems = this.inventoryService.getItems();
     if (!this.searchTerm.trim()) {
@@ -32,7 +32,14 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  // 过滤受欢迎的物品
   showPopular() {
     this.displayItems = this.inventoryService.getItems().filter(item => item.isPopular);
+  }
+
+  // 新增：重置并显示所有物品
+  showAll() {
+    this.searchTerm = ''; // 清空搜索框
+    this.displayItems = this.inventoryService.getItems(); // 重新拉取完整数组
   }
 }
